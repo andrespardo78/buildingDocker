@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    image: andres12pardo/clockboxv1
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+  redis:
+    image: redis:6

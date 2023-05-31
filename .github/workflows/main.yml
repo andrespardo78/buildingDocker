@@ -53,7 +53,7 @@ jobs:
           ssh-keyscan -t rsa  ${HOST} >> ~/.ssh/known_hosts
           echo "$PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
-          scp -i private_key.pem -r $(pwd) $USER@$HOST:/app
+          scp -i private_key.pem -r $(pwd) $USER@$HOST:/home/ubuntu/app
           ssh -i private_key.pem -t $USER@$HOST "cd /app && docker-compose down && docker-compose pull && docker-compose up -d"
           rm -f private_key.pem         
   

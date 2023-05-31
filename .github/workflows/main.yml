@@ -48,6 +48,8 @@ jobs:
           HOST: ${{ secrets.PRODUCTION_HOST }}
           USER: ${{ secrets.PRODUCTION_USER }}
         run: |
+          echo "HOST *" > ~/.ssh/config
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
           echo "$PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
           scp -i private_key.pem -r . $USER@$HOST:/app
